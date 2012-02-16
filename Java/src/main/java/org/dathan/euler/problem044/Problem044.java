@@ -1,4 +1,4 @@
-package org.dathan.euler;
+package org.dathan.euler.problem044;
 
 import java.util.ArrayList;
 import java.util.HashSet;

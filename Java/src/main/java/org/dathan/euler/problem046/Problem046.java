@@ -1,4 +1,4 @@
-package org.dathan.euler;
+package org.dathan.euler.problem046;
 
 import java.util.ArrayList;
 import java.util.Iterator;

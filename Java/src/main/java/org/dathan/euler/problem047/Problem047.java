@@ -1,4 +1,4 @@
-package org.dathan.euler;
+package org.dathan.euler.problem047;
 
 import java.util.Map;
 
