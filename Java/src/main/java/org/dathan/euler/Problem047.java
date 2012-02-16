@@ -1,3 +1,5 @@
+package org.dathan.euler;
+
 import java.util.Map;
 
 import org.dathan.numeric.Factorizer;
