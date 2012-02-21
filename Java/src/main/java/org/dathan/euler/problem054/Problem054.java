@@ -1,5 +1,7 @@
 package org.dathan.euler.problem054;
 
+import org.dathan.euler.problem054.hands.Hand;
+
 /*
 In the card game poker, a hand consists of five cards and are ranked, from lowest to highest, in the following way:
 
@@ -46,5 +48,22 @@ How many hands does Player 1 win?
  */
 
 public class Problem054 {
-
+	public static void main(String[] args) {
+		new Problem054().run();
+	}
+	
+	public Problem054() {
+	}
+	
+	public void run() {
+		int player1Wins = 0;
+		HandReader handReader = new HandReader("054\\poker.txt");
+		while (handReader.hasNext()) {
+			Hand player1Hand = handReader.getPlayer1Hand();
+			Hand player2Hand = handReader.getPlayer2Hand();
+			if (player1Hand.compareTo(player2Hand) == 1)
+				player1Wins++;
+		}
+		System.out.println(player1Wins);
+	}
 }
