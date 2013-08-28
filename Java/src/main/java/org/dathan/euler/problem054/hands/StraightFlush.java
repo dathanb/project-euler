@@ -1,20 +1,56 @@
 package org.dathan.euler.problem054.hands;
 
 import org.dathan.euler.problem054.Card;
+import org.dathan.euler.problem054.Cards;
+import org.dathan.numeric.Integers;
 
 class StraightFlush extends Hand {
-	public StraightFlush(Card... cards) {
-		super(cards);
-	}
-	
-	@Override
-	public int compareTo(Hand o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public static Hand newStraightFlush(Card[] cards) {
+        Hand flush = Flush.newFlush(cards);
+        if (flush == null)
+            return null;
 
-	public static Hand newStraightFlush(Card[] cards) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        // if we get here, it's at least a flush
+        Card[] sortedByFace = Cards.getSortedByFace(cards);
+        for (int i=1; i<cards.length; ++i) {
+            if (cards[i].getFace() != cards[i-1].getFace()+1) {
+                return null;
+            }
+        }
+
+        return new StraightFlush(cards);
+    }
+
+    private int highestCard;
+
+    public StraightFlush(Card... cards) {
+        super(cards);
+        int max = Integer.MIN_VALUE;
+        for (Card card: cards) {
+            if (card.getFace() > max) {
+                max = card.getFace();
+            }
+        }
+        highestCard = max;
+    }
+
+    public int getHighestCard() {
+        return highestCard;
+    }
+
+    @Override
+    public int compareTo(Hand o) {
+        if (!(o instanceof StraightFlush)) {
+            return 1;
+        }
+
+        if (highestCard > ((StraightFlush)o).highestCard) {
+            return 1;
+        } else if (highestCard < ((StraightFlush)o).highestCard) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
 }

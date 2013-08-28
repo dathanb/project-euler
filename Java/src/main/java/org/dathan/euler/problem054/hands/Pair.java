@@ -1,60 +1,47 @@
 package org.dathan.euler.problem054.hands;
 
 import org.dathan.euler.problem054.Card;
+import org.dathan.euler.problem054.Cards;
 
 class Pair extends Hand {
-	private int pairFace;
+    private Card pair;
 
-	
-	public static Hand newPair(Card... cards) {
-		if (isPair(cards))
-			return new Pair(cards);
-		else 
-			return null;
-	}
-	
-	private static boolean isPair(Card... cards) {
-		return false;
-	}
-	
-	public Pair(Card... cards) {
-		super(cards);
-		int[] faces = new int[15];
-		for (int i=0; i<15; ++i) {
-			faces[i] = 0;
-		}
-		for (Card card: cards) {
-			faces[card.getFace()]++;
-		}
-		for (int i=0; i<15; ++i) {
-			if (faces[i] == 2)
-				pairFace = i;
-		}
-	}
+    /**
+     * Note: will incorrectly report two pair, three of a kind, four of a kind, and full house as a pair
+     * @param cards
+     * @return
+     */
+    public static Hand newPair(Card... cards) {
+        Card[] sortedCards = Cards.getSortedByFace(cards);
+        for (int i=1; i<5; ++i) {
+            if (sortedCards[i].compareTo(sortedCards[i-1]) == 0) {
+                return new Pair(sortedCards, sortedCards[i]);
+            }
+        }
+        return null;
+    }
 
-	
-	
-	@Override
-	public int compareTo(Hand other) {
-		if (other instanceof HighCard) {
-			return 1;
-		} else if (other instanceof Pair) {
-			Pair otherPair = (Pair)other;
-			if (pairFace > otherPair.pairFace)
-				return 1;
-			else if (pairFace < otherPair.pairFace)
-				return -1;
-			else return compareHighCards(other.cards);
-		} else if ((other instanceof TwoPair) ||
-				(other instanceof ThreeOfAKind) ||
-				(other instanceof Straight) ||
-				(other instanceof Flush) ||
-				(other instanceof FullHouse) ||
-				(other instanceof FourOfAKind) ||
-				(other instanceof StraightFlush)) {
-			return -1;
-		} else {
-			throw new RuntimeException("Unknown hand type");
-		}
-	}
+    public Pair(Card[] cards, Card pair) {
+        super(cards);
+        this.pair = pair;
+    }
+
+    @Override
+    public int compareTo(Hand other) {
+        if (other instanceof HighCard) {
+            return 1;
+        } else if (! (other instanceof Pair)) {
+            return -1;
+        } else {
+            if (pair.compareTo(((Pair)other).pair) != 0) {
+                return pair.compareTo(((Pair)other).pair);
+            }
+            for (int i=4; i>=0; --i) {
+                if (cards.get(i).compareTo(other.cards.get(i)) != 0) {
+                    return cards.get(i).compareTo(other.cards.get(i));
+                }
+            }
+            return 0;
+        }
+    }
 }
