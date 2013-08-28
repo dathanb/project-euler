@@ -4,21 +4,34 @@ import org.dathan.euler.problem054.Card;
 import org.dathan.euler.problem054.Cards;
 
 class TwoPair extends Hand {
-    public static Hand newTwoPair(Card[] cards) {
+    public static TwoPair newTwoPair(Card[] cards) {
         Card[] sorted = Cards.getSortedByFace(cards);
-        for (int i = 1; i < 5; i++) {
-            if (sorted[i].getFace() == sorted[i - 1].getFace() + 1) {
-                return new TwoPair(cards, sorted[i]);
+
+        if (sorted[0].compareTo(sorted[1]) == 0) {
+            if (sorted[2].compareTo(sorted[3]) == 0) {
+                return new TwoPair(sorted, sorted[0], sorted[2]);
+            } else if (sorted[3].compareTo(sorted[4]) == 0) {
+                return new TwoPair(sorted, sorted[0], sorted[3]);
             }
+        } else if (sorted[1].compareTo(sorted[2]) == 0
+                && sorted[3].compareTo(sorted[4]) == 0) {
+            return new TwoPair(sorted, sorted[1], sorted[3]);
         }
         return null;
     }
 
-    private Card pairCard;
+    private Card higherPairCard;
+    private Card lowerPairCard;
 
-    protected TwoPair(Card[] cards, Card pairCard) {
+    protected TwoPair(Card[] cards, Card firstPair, Card secondPair) {
         super(Cards.getSortedByFace(cards));
-        this.pairCard = pairCard;
+        if (firstPair.compareTo(secondPair) > 0) {
+            higherPairCard = firstPair;
+            lowerPairCard = secondPair;
+        } else {
+            higherPairCard = secondPair;
+            lowerPairCard = firstPair;
+        }
     }
 
     @Override
@@ -32,11 +45,13 @@ class TwoPair extends Hand {
         }
 
         TwoPair otherPair = (TwoPair)o;
-        if (pairCard.compareTo(otherPair.pairCard) != 0) {
-            return pairCard.compareTo(otherPair.pairCard);
+        if (higherPairCard.compareTo(otherPair.higherPairCard) != 0) {
+            return higherPairCard.compareTo(otherPair.higherPairCard);
+        } else if (lowerPairCard.compareTo(otherPair.lowerPairCard) != 0) {
+            return lowerPairCard.compareTo(otherPair.lowerPairCard);
+        } else {
+            return compareCards(this, o);
         }
-
-        return compareCards(this, o);
     }
 
     @Override
