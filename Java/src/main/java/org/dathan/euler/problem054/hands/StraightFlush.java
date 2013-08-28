@@ -18,24 +18,11 @@ class StraightFlush extends Hand {
             }
         }
 
-        return new StraightFlush(cards);
+        return new StraightFlush(sortedByFace);
     }
 
-    private int highestCard;
-
-    public StraightFlush(Card... cards) {
-        super(cards);
-        int max = Integer.MIN_VALUE;
-        for (Card card: cards) {
-            if (card.getFace() > max) {
-                max = card.getFace();
-            }
-        }
-        highestCard = max;
-    }
-
-    public int getHighestCard() {
-        return highestCard;
+    public StraightFlush(Card[] cards) {
+        super(Cards.getSortedByFace(cards));
     }
 
     @Override
@@ -44,13 +31,6 @@ class StraightFlush extends Hand {
             return 1;
         }
 
-        if (highestCard > ((StraightFlush)o).highestCard) {
-            return 1;
-        } else if (highestCard < ((StraightFlush)o).highestCard) {
-            return -1;
-        } else {
-            return 0;
-        }
+        return compareCards(this, o);
     }
-
 }

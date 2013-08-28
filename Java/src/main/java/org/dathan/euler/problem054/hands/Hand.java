@@ -39,7 +39,16 @@ public abstract class Hand implements Comparable<Hand>{
 		return HighCard.newHighCard(cards);
 	}
 	
-	public Hand(Card... cards) {
+	protected static int compareCards(Hand a, Hand b) {
+        for (int i=4; i>=0; i--) {
+            if (a.cards.get(i).compareTo(b.cards.get(i)) != 0) {
+                return a.cards.get(i).compareTo(b.cards.get(i));
+            }
+        }
+        return 0;
+    }
+
+    public Hand(Card... cards) {
 		SortedSet<Card> sortedCards = new TreeSet<Card>();
 		for (int i=0; i<cards.length; ++i) {
 			sortedCards.add(cards[i]);

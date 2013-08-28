@@ -15,7 +15,7 @@ class Straight extends Hand {
     }
 
     protected Straight(Card[] cards) {
-        super(cards);
+        super(Cards.getSortedByFace(cards));
     }
 
     @Override
