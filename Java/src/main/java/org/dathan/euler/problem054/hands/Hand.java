@@ -6,10 +6,11 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.dathan.euler.problem054.Card;
+import org.dathan.euler.problem054.Cards;
 
 public abstract class Hand implements Comparable<Hand>{
 	protected List<Card> cards = new ArrayList<Card>();
-	
+
 	public static Hand newHand(Card... cards) {
 		Hand hand;
 		hand = StraightFlush.newStraightFlush(cards);
@@ -38,7 +39,7 @@ public abstract class Hand implements Comparable<Hand>{
 			return hand;
 		return HighCard.newHighCard(cards);
 	}
-	
+
 	protected static int compareCards(Hand a, Hand b) {
         for (int i=4; i>=0; i--) {
             if (a.cards.get(i).compareTo(b.cards.get(i)) != 0) {
@@ -49,15 +50,12 @@ public abstract class Hand implements Comparable<Hand>{
     }
 
     public Hand(Card... cards) {
-		SortedSet<Card> sortedCards = new TreeSet<Card>();
+        Card[] sortedCards = Cards.getSortedByFace(cards);
 		for (int i=0; i<cards.length; ++i) {
-			sortedCards.add(cards[i]);
-		}
-		for (Card card: sortedCards) {
-			this.cards.add(card);
+			this.cards.add(sortedCards[i]);
 		}
 	}
-	
+
 	protected int compareHighCards(List<Card> otherCards) {
 		for (int i=cards.size()-1; i>=0; --i) {
 			int comparison = cards.get(i).compareTo(otherCards.get(i));

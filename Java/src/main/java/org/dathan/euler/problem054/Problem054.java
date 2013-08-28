@@ -55,9 +55,15 @@ public class Problem054 {
     }
 
     public Problem054() {
+        // run assertions
+        Card[] cars = new Card[] { new Card("5S"), new Card("6H"), new Card("6D"), new Card("6C"), new Card("6S") };
+        Hand hand = Hand.newHand(cars);
+        System.out.println(hand.getClass());
     }
 
     public void run() {
+
+
         int player1Wins = 0;
         String[] pathSegments = new String[] { "src", "main", "resources", "054", "poker.txt" };
         File file = new File(".");
@@ -75,7 +81,7 @@ public class Problem054 {
             System.out.println(player1Hand);
             System.out.println(player2Hand);
             index++;
-            if (player1Hand.compareTo(player2Hand) == 1)
+            if (player1Hand.compareTo(player2Hand) > 0)
                 player1Wins++;
         }
         System.out.println(player1Wins);
