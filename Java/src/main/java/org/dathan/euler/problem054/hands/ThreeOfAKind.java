@@ -14,11 +14,11 @@ class ThreeOfAKind extends Hand {
     public static Hand newThreeOfAKind(Card[] cards) {
         Card[] sorted = Cards.getSortedByFace(cards);
 
-        if (sorted[0].compareTo(cards[2]) == 0) {
+        if (sorted[0].compareTo(sorted[2]) == 0) {
             return new ThreeOfAKind(cards, sorted[0]);
-        } else if (sorted[1].compareTo(cards[3]) == 0) {
+        } else if (sorted[1].compareTo(sorted[3]) == 0) {
             return new ThreeOfAKind(cards, sorted[1]);
-        } else if (sorted[2].compareTo(cards[4]) == 0) {
+        } else if (sorted[2].compareTo(sorted[4]) == 0) {
             return new ThreeOfAKind(cards, sorted[2]);
         } else {
             return null;
@@ -45,5 +45,10 @@ class ThreeOfAKind extends Hand {
         } else {
             return compareCards(this, o);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Three of a kind: " + getCardsString();
     }
 }

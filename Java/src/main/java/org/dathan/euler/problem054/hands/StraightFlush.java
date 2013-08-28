@@ -33,4 +33,9 @@ class StraightFlush extends Hand {
 
         return compareCards(this, o);
     }
+
+    @Override
+    public String toString() {
+        return "Straight Flush: " + getCardsString();
+    }
 }

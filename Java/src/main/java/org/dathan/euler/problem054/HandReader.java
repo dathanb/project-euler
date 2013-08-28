@@ -24,7 +24,7 @@ public class HandReader {
 
         try {
             Scanner scanner = new Scanner(new File(filename));
-            scanner.useDelimiter(" ");
+//            scanner.useDelimiter(" ");
             String token;
             while (scanner.hasNext()) {
                 Card[] playerOneCards = new Card[5];
@@ -38,7 +38,7 @@ public class HandReader {
                 player1Hands.add(Hand.newHand(playerOneCards));
                 player2Hands.add(Hand.newHand(playerTwoCards));
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }

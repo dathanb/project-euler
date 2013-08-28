@@ -24,4 +24,9 @@ class HighCard extends Hand {
         }
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return "Nuffin: " + getCardsString();
+    }
 }

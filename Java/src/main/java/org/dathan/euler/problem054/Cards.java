@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 public class Cards {
     public static Card[] getSortedByFace(Card[] cards) {
-        Card[] newCards = new Card[cards.length];
+        Card[] newCards = cards.clone();
         Arrays.sort(newCards, new Comparator<Card>(){
             @Override
             public int compare(Card arg0, Card arg1) {

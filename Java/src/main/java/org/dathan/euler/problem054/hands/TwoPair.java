@@ -38,4 +38,9 @@ class TwoPair extends Hand {
 
         return compareCards(this, o);
     }
+
+    @Override
+    public String toString() {
+        return "Two pair: " + getCardsString();
+    }
 }

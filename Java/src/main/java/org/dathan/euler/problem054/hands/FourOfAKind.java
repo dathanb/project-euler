@@ -53,4 +53,9 @@ class FourOfAKind extends Hand {
             return 0;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Four of a kind: " + getCardsString();
+    }
 }

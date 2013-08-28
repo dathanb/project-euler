@@ -66,9 +66,15 @@ public class Problem054 {
         }
 
         HandReader handReader = new HandReader(file.getAbsolutePath());
+        int index = 0;
         while (handReader.hasNext()) {
+            handReader.moveNext();
             Hand player1Hand = handReader.getPlayer1Hand();
             Hand player2Hand = handReader.getPlayer2Hand();
+            System.out.println("=== " + index + " ===");
+            System.out.println(player1Hand);
+            System.out.println(player2Hand);
+            index++;
             if (player1Hand.compareTo(player2Hand) == 1)
                 player1Wins++;
         }

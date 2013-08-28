@@ -36,4 +36,9 @@ class Straight extends Hand {
             return 0;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Straight: " + getCardsString();
+    }
 }

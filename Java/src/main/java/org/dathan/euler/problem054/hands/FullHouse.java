@@ -49,4 +49,9 @@ class FullHouse extends Hand {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "Full House: " + getCardsString();
+    }
 }

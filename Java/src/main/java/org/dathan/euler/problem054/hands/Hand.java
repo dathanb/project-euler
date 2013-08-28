@@ -66,4 +66,8 @@ public abstract class Hand implements Comparable<Hand>{
 		}
 		return 0;
 	}
+
+    protected String getCardsString() {
+        return cards.get(0) + " " + cards.get(1) + " " + cards.get(2) + " " + cards.get(3) + " " + cards.get(4);
+    }
 }

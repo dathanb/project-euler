@@ -31,7 +31,7 @@ class Flush extends Hand {
         } else if (!(o instanceof Flush)) {
             return 1;
         } else {
-            Flush otherFlush = (Flush)o;
+            Hand otherFlush = (Hand)o;
             for (int i=4; i>=0; --i) {
                 if (cards.get(i).compareTo(otherFlush.cards.get(i)) != 0) {
                     return cards.get(i).compareTo(otherFlush.cards.get(i));
@@ -39,5 +39,10 @@ class Flush extends Hand {
             }
             return 0;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Flush: " + getCardsString();
     }
 }
