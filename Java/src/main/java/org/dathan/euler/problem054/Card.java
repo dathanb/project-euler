@@ -3,12 +3,12 @@ package org.dathan.euler.problem054;
 public class Card implements Comparable<Card> {
 	private int face;
 	private char suit;
-	
-	public Card(char face, char suit) {
-		this.face = getFace(face);
-		this.suit = suit;
+
+	public Card(String cardString)  {
+		this.face = getFace(cardString.charAt(0));
+		this.suit = cardString.charAt(1);
 	}
-	
+
 	private int getFace(char val) {
 		switch(val) {
 		case '2': return 2;
@@ -28,11 +28,11 @@ public class Card implements Comparable<Card> {
 			throw new RuntimeException();
 		}
 	}
-	
+
 	public int getFace() {
 		return face;
 	}
-	
+
 	public char getSuit() {
 		return suit;
 	}
@@ -41,7 +41,7 @@ public class Card implements Comparable<Card> {
 	public int compareTo(Card o) {
 		return face > o.face ? 1 : (face < o.face ? -1 : 0);
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return (face * 31) + suit;
@@ -54,7 +54,7 @@ public class Card implements Comparable<Card> {
 		Card other = (Card)obj;
 		return (face == other.face) && (suit == other.suit);
 	}
-	
+
 	@Override
 	public String toString() {
 		char face;
@@ -76,5 +76,5 @@ public class Card implements Comparable<Card> {
 		}
 		return String.format("%c%c", face, suit);
 	}
-	
+
 }
