@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Problem 005</name>
-	<comment></comment>
+	<name>project-euler-scala</name>
+	<comment>Scala implementations of Project Euler problems</comment>
 	<projects>
 	</projects>
 	<buildSpec>
