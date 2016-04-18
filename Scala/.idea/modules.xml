@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Problem 001/Problem 001.iml" filepath="$PROJECT_DIR$/Problem 001/Problem 001.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Problem 002/Problem 002.iml" filepath="$PROJECT_DIR$/Problem 002/Problem 002.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Problem 003/Problem 003.iml" filepath="$PROJECT_DIR$/Problem 003/Problem 003.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Problem 004/Problem 004.iml" filepath="$PROJECT_DIR$/Problem 004/Problem 004.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Problem 005/Problem 005.iml" filepath="$PROJECT_DIR$/Problem 005/Problem 005.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Problem 006/Problem 006.iml" filepath="$PROJECT_DIR$/Problem 006/Problem 006.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Problem 007/Problem 007.iml" filepath="$PROJECT_DIR$/Problem 007/Problem 007.iml" />
+    </modules>
+  </component>
+</project>
